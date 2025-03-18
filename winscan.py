@@ -9,12 +9,13 @@ from winreg import (
 
 class WinScan:
 
-    def __init__(self, path="reg"):
-        self.default = os.path.join(path, "DEFAULT")
-        self.sam = os.path.join(path, "SAM")
-        self.security = os.path.join(path, "SECURITY")
-        self.software = os.path.join(path, "SOFTWARE")
-        self.system_path = os.path.join(path, "SYSTEM")
+    def __init__(self):
+        self.path = os.path.join(os.getcwd(), "reg")
+        self.default = os.path.join(self.path, "DEFAULT")
+        self.sam = os.path.join(self.path, "SAM")
+        self.security = os.path.join(self.path, "SECURITY")
+        self.software = os.path.join(self.path, "SOFTWARE")
+        self.system_path = os.path.join(self.path, "SYSTEM")
 
     def get_users(self):
         with OpenKeyEx(HKEY_LOCAL_MACHINE, self.system_path) as user_profile:
