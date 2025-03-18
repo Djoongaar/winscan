@@ -19,12 +19,12 @@ class WinScan:
 
     def get_users(self):
         print(os.listdir(self.path))
-        with OpenKeyEx(HKEY_USERS, self.system_path) as user_profile:
+        with OpenKeyEx(HKEY_LOCAL_MACHINE, self.default) as user_profile:
             for i in range(QueryInfoKey(user_profile)[0]):
                 print(i)
 
 
 if __name__ == '__main__':
     winscan = WinScan()
-    print(winscan.system_path)
+    print(winscan.default)
     winscan.get_users()
